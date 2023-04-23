@@ -1,0 +1,2 @@
+location = "WestUS"
+ambiente = "test"
