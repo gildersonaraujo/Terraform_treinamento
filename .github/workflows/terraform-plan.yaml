@@ -1,0 +1,27 @@
+name: Terraform Plan
+on: push
+env:
+  ARM_CLIENT_ID: ${{secrets.RM_CLIENT_ID}}
+  ARM_TENANT_ID: ${{secrets.ARM_TENANT_ID}}
+  ARM_SUBSCRIPTION_ID: ${{secrets.ARM_SUBSCRIPTION_ID}}
+  ARM_CLIENT_SECRET: ${{secrets.ARM_CLIENT_SECRET}}
+
+jobs:
+  Terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: terraform init
+        run: terraform init
+
+      - name: terraform validate
+        run: terraform validate
+
+      - name: terraform Plan
+        run: terraform plan
